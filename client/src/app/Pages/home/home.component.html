@@ -1,0 +1,30 @@
+<table class="student">
+    <thead>
+        <tr>
+            <th>StudentID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Form</th>
+            <th>Options</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of (students$ | async)">
+            <td *ngIf="student._id">{{student._id.slice(0,5)}}</td>
+            <td>{{student.fname}}</td>
+            <td>{{student.lname}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.form}}</td>
+            <td>
+                <button class="btn" routerLink="/students/edit/{{student._id}}">Edit</button>
+                <button *ngIf="student._id" class="btn" (click)="deleteRecord(student._id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+<button routerLink="/students/create">Create Student</button>

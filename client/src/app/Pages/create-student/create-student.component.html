@@ -1,0 +1,20 @@
+<form [formGroup]="studentForm" (submit)="createUser()">
+    <label>
+        <span>First Name</span>
+        <input type="text" formControlName="fname">
+    </label>
+    <label>
+        <span>Last Name</span>
+        <input type="text" formControlName="lname">
+    </label>
+    <label>
+        <span>Email</span>
+        <input type="text" formControlName="email">
+    </label>
+    <label>
+        <span>Form</span>
+        <input type="text" formControlName="form">
+    </label>
+    <br>
+    <button>Submit</button>
+</form>

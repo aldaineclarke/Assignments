@@ -1,0 +1,20 @@
+<form [formGroup]="studentForm" (submit)="updateUser()" *ngIf="student">
+    <label>
+        <span>First Name</span>
+        <input type="text" formControlName="fname" value="{{student.fname}}">
+    </label>
+    <label>
+        <span>Last Name</span>
+        <input type="text" formControlName="lname" value="{{student.lname}}">
+    </label>
+    <label>
+        <span>Email</span>
+        <input type="text" formControlName="email" value="{{student.email}}">
+    </label>
+    <label>
+        <span>Form</span>
+        <input type="text" formControlName="form" value="{{student.form}}">
+    </label>
+    <br>
+    <button>Submit</button>
+</form>
