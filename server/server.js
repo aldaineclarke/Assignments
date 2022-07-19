@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const student = require("../server/models/student")
-
+const cors = require("cors");
 app.use(express.json());
+app.use(cors())
 app.use(express.urlencoded({extended:true}));
 
 app.get("/api/students/", async (req, res, next)=>{
