@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.content{
+    max-width: 1240px;
+    margin: auto;
+}
+form{
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    width: 400px;
+    padding: 1rem;
+    margin: auto;
+}
+label{
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+}
