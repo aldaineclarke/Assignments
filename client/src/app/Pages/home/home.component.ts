@@ -16,11 +16,14 @@ export class HomeComponent implements OnInit {
     this.reloadStudents()
   }
   reloadStudents(){
-    this.students$ = this.studentService.getAllStudents()
+    this.students$ = this.studentService.getAllStudents();
+    console.log(this.students$)
   }
   deleteRecord(id:string){
-    this.studentService.deleteStudent(id).subscribe();
-    this.reloadStudents();
+    this.studentService.deleteStudent(id).subscribe(()=>{
+      this.reloadStudents();
+    });
+    
   }
 
 
