@@ -6,6 +6,7 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Form</th>
+            <th>Accounts</th>
             <th>Options</th>
 
         </tr>
@@ -17,6 +18,9 @@
             <td>{{student.lname}}</td>
             <td>{{student.email}}</td>
             <td>{{student.form}}</td>
+            <td>
+                <button routerLink="/students/{{student._id}}/accounts/create">Add Account</button>
+            </td>
             <td>
                 <button class="btn" routerLink="/students/edit/{{student._id}}">Edit</button>
                 <button *ngIf="student._id" class="btn" (click)="deleteRecord(student._id)">Delete</button>

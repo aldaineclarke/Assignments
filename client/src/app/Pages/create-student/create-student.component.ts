@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StudentService } from 'src/app/Services/student.service';
+import { AccountInterface, AccountService } from 'src/app/Services/account.service';
+import { StudentInterface, StudentService } from 'src/app/Services/student.service';
 
 @Component({
   selector: 'app-create-student',
@@ -10,13 +11,19 @@ import { StudentService } from 'src/app/Services/student.service';
 })
 export class CreateStudentComponent implements OnInit {
 
-  constructor(private formBuilder:FormBuilder, private studentService:StudentService, private router: Router) { }
+  constructor(private formBuilder:FormBuilder, private studentService:StudentService, private router: Router, private accountService:AccountService) { }
 
   studentForm = this.formBuilder.group({
     fname: ["", Validators.required],
     lname: ["", Validators.required],
     email: ["", Validators.required],
     form: ["", Validators.required],
+    accountNum: ['', Validators.required],
+    bank: ['', Validators.required],
+    branch: ['', Validators.required],
+    accountType: ['', Validators.required],
+    status: ['', Validators.required],
+    studentId: ['', Validators.required],
   })
   ngOnInit(): void {
   }
@@ -28,8 +35,16 @@ export class CreateStudentComponent implements OnInit {
       email: this.studentForm.get("email")?.value,
       form: this.studentForm.get("form")?.value
     }
-    this.studentService.createStudent(student).subscribe(()=>{
-      this.router.navigate(["/students"])
+    // let account:Partial<AccountInterface> = {
+    //   accountNum: this.studentForm.get("accountNum")?.value,
+    //     bank: this.studentForm.get("bank")?.value,
+    //     branch: this.studentForm.get("branch")?.value,
+    //     accountType: this.studentForm.get("accountType")?.value,
+    //     status: this.studentForm.get("status")?.value,
+    // }
+    this.studentService.createStudent(student).subscribe((response:StudentInterface)=>{
+        this.router.navigate(["/students"])
+
     });
 
     
