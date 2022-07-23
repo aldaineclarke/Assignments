@@ -7,5 +7,5 @@ const studentSchema = new mongoose.Schema({
     form: Number,
 });
 
-const student = mongoose.model("Student", studentSchema);
-module.exports = student;
+const Student = mongoose.model("Student", studentSchema);
+module.exports = Student;

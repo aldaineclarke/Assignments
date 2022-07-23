@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Student = require("../models/student")
 
 
-app.get("/", async (req, res, next)=>{
+router.get("/", async (req, res, next)=>{
     try{
         let students = await Student.find();
         res.status(200).json(students)
@@ -13,20 +13,24 @@ app.get("/", async (req, res, next)=>{
     
 });
 
-app.post("/create",async(req, res, next)=>{
-    let studentData = {
+router.post("/create",async(req, res, next)=>{
+    try{
+        let studentData = {
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
         form:req.body.form
+        }
+        let newStudent = new Student(studentData);
+        await newStudent.save()
+        res.status(201).json(newStudent)
+    }catch(error){
 
+        res.status(404).json({message:error});
     }
-    let newStudent = new Student(studentData);
-    await newStudent.save()
-    res.status(201).json(newStudent);
 });
 
-app.get("/:id",async(req,res,next)=>{
+router.get("/:id",async(req,res,next)=>{
     let id = req.params.id;
     try{
 
@@ -38,7 +42,7 @@ app.get("/:id",async(req,res,next)=>{
 
 });
 
-app.delete("/:id",async(req,res,next)=>{
+router.delete("/:id",async(req,res,next)=>{
     let id = req.params.id;
     try{
         await Student.findByIdAndRemove(id);
@@ -48,7 +52,7 @@ app.delete("/:id",async(req,res,next)=>{
     }
 });
 
-app.patch("/:id", async(req,res, next)=>{
+router.patch("/:id", async(req,res, next)=>{
     let id = req.params.id;
     try{
         let data = req.body;

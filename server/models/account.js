@@ -5,8 +5,8 @@ let accountSchema = mongoose.Schema({
     bank:String,
     branch: String,
     accountType:String,
-    status: String,
-    studentId: mongoose.Types.ObjectId()
+    status: {type:String},
+    studentId: {type: mongoose.Types.ObjectId, ref:'Student'}
 
 });
 
