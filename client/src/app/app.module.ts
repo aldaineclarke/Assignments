@@ -7,13 +7,15 @@ import { HomeComponent } from './Pages/home/home.component';
 import { CreateStudentComponent } from './Pages/create-student/create-student.component';
 import { EditStudentComponent } from './Pages/edit-student/edit-student.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateAccountComponent } from './Pages/create-account/create-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreateStudentComponent,
-    EditStudentComponent
+    EditStudentComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
