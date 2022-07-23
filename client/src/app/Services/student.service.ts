@@ -18,8 +18,8 @@ export class StudentService {
   getStudentById(id:string):Observable<StudentInterface>{
     return this._http.get<StudentInterface>(this.endpoint+"/"+id);
   }
-  createStudent(student:StudentInterface){
-    return this._http.post(this.endpoint+"/create",student);
+  createStudent(student:StudentInterface):Observable<StudentInterface>{
+    return this._http.post<StudentInterface>(this.endpoint+"/create",student);
   }
   UpdateStudent(id:string, data:Partial<StudentInterface>){
     return this._http.patch(this.endpoint+"/"+id, data);
